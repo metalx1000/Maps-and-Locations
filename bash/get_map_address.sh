@@ -5,7 +5,7 @@
 #long=-81.51112916
 echo "Retrieving Map..."
 
-if [ "$#" -lt 2 ]
+if [ "$#" -lt 1 ]
 then
   echo "input error"
   echo "useage: $0 '<address>' <type> <zoom>"
