@@ -1,15 +1,12 @@
 #!/bin/bash
 
-#examples: 
-#lat=26.26152844
-#long=-81.51112916
 echo "Retrieving street view..."
 
 if [ "$#" -lt 2 ]
 then
   echo "input error"
   echo "useage: $0 <latitude> <longitude>"
-  echo "example useage: $0 26.26152844 -81.51112916"
+  echo "example useage: $0 40.714728 -73.998672"
   exit 1
 fi
 
