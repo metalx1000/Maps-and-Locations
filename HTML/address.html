@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<head>
+        <script src="../js/jquery.js"></script>
+        <script type="text/javascript">
+        var watchID;
+        var geoLoc;
+        function showLocation(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                get_add(latitude, longitude);
+        }
+        
+        function errorHandler(err) {
+          if(err.code == 1) {
+            alert("Error: Access is denied!");
+          }else if( err.code == 2) {
+            alert("Error: Position is unavailable!");
+          }
+        }
+        function getLoc(){
+        
+           if(navigator.geolocation){
+              // timeout at 60000 milliseconds (60 seconds)
+              var options = {enableHighAccuracy:true,maximumAge:30000,timeout:27000};
+              geoLoc = navigator.geolocation;
+              watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+           }else{
+              alert("Sorry, browser does not support geolocation!");
+           }
+        }
+
+        function get_add(latitude, longitude){
+                $.get("http://maps.google.com/maps/api/geocode/xml?latlng=" + latitude + "," + longitude + "&sensor=false", function(data){
+                        $(data).find("formatted_address").each(function(){
+                                var unitData = $(this).text();
+                                $("#output").html("Latitude : " + latitude + "<br> Longitude: " + longitude + "<br>");
+                                $("#output").append(unitData);
+                                return false;
+                        });     
+                });
+        }
+        </script>
+</head>
+<html>
+<body>
+   <form>
+     <input type="button" onclick="getLoc();" value="Watch Update"/>
+   </form>
+        <div id="output"></div>
+</body>
+</html>
+
+
+
