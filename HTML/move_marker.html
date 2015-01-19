@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Move a Mark on a Map</title>
+    <link href="https://developers.google.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+      var x=26.0906973;
+      var y=-81.732371;
+      var center = new google.maps.LatLng(x,y);
+
+      function initialize() {
+        var mapOptions = {
+          zoom: 15,
+          center: center,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                      mapOptions);
+
+        var image = 'http://www.apponic.com/data/softimg/mac/audio/audio-editors/tux-guitar-79268-icon.jpeg';
+              marker = new google.maps.Marker({
+            position: center,
+            map: map,
+            icon: image
+        });
+
+              moveMarker( map, marker );
+      }
+
+      function moveMarker( map, marker ) {
+          
+          //delayed so you can see it move
+          setInterval( function(){ 
+              x+=0.0001;
+              y-=0.0001;
+              center = new google.maps.LatLng(x,y);
+              marker.setPosition( center );
+              map.panTo( center );
+              
+          }, 500 );
+
+      };
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
+
+
