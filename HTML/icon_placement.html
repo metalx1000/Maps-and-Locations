@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Maps</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+      var x=26.0906973;
+      var y=-81.732371;
+      var center = new google.maps.LatLng(x,y);
+      var map; 
+      var img = [];
+      
+      img.push("http://imgbin.org/images/21892.png");
+      img.push("http://imgbin.org/images/21893.png");
+
+      var mark=img[0];
+
+      $(document).ready(function(){
+        for(var i=0;i < img.length;i++){
+          var icons=$('#icons');
+          icons.append("<img src='"+img[i]+"' class='icon' height='64' width='64'>");
+        }
+
+        $(".icon").click(function(){
+          mark=$(this).attr('src');
+        });  
+      });
+    
+      function initialize() {
+        // Create the map.
+        var mapOptions = {
+          zoom: 17,
+          center: center,
+          mapTypeId: google.maps.MapTypeId.TERRAIN
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        google.maps.event.addListener(map, 'click', function(event) {
+           placeMarker(event.latLng);
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+
+      function placeMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location, 
+            map: map,
+            icon: mark 
+        });
+      }
+  </script>
+  </head>
+  <body>
+    <div id="icons"></div>
+    <div id="map-canvas"></div>
+  </body>
+
+</html>
