@@ -7,7 +7,7 @@
 if [ "$#" -lt 2 ]
 then
   echo "input error"
-  echo "example useage: $0 26.26152844 -81.51112916"
+  echo "example usage: $0 26.26152844 -81.51112916"
   exit 1
 fi
 
