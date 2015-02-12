@@ -5,8 +5,8 @@ echo "Retrieving street view..."
 if [ "$#" -lt 1 ]
 then
   echo "input error"
-  echo "useage: $0 '<address>'"
-  echo "example useage: $0 '123 5th ave new york'"
+  echo "usage: $0 '<address>'"
+  echo "example usage: $0 '123 5th ave new york'"
   exit 1
 fi
 
