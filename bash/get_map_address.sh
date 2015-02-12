@@ -8,8 +8,8 @@ echo "Retrieving Map..."
 if [ "$#" -lt 1 ]
 then
   echo "input error"
-  echo "useage: $0 '<address>' <type> <zoom>"
-  echo "example useage: $0 '123 5th ave new york' satellite 15"
+  echo "usage: $0 '<address>' <type> <zoom>"
+  echo "example usage: $0 '123 5th ave new york' satellite 15"
   echo "type examples: roadmap, terrain, satellite, hybrid"
   echo "hybrid is default"
   exit 1
