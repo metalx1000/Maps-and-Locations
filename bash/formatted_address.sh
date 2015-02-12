@@ -8,7 +8,7 @@ if [ "$#" -lt 1 ]
 then
   echo "input error"
   echo "usage: $0 <adderss>"
-  echo "example useage: $0 '123 5th Ave S Naples FL'"
+  echo "example usage: $0 '123 5th Ave S Naples FL'"
   exit 1
 fi
 
