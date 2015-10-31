@@ -1,0 +1,17 @@
+Coordinate format
+degrees minutes seconds: 40° 26′ 46″ N 79° 58′ 56″ W
+degrees decimal minutes: 40° 26.767′ N 79° 58.933′ W
+decimal degrees: 40.446° N 79.982° W
+
+#convertion
+#degrees decimal minutes to decimal degrees
+degrees + (decimal_minutes/60)
+
+#example
+ddm=40° 26.767′ N 79° 58.933′ W
+dd=40+(26.767/60)
+
+#BASH
+echo "40+(26.767/60)"|bc -l
+#limit decimal spaces
+echo "scale=6;40+(26.767/60)"|bc -l
